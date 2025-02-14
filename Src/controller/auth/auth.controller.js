@@ -20,7 +20,7 @@ export default {
             { lastLogin: Date.now() }
           );
 
-          const refreshToken = await jwtRefreshSign(data.id, data.tokenVersion);
+          const refreshToken = await jwtRefreshSign(data._id, data.tokenVersion);
 
           res.cookie("refreshToken", refreshToken, {
             httpOnly: true,

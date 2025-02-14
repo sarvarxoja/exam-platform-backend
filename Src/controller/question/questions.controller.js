@@ -21,7 +21,11 @@ export default {
 
       res.status(201).json({ createdData, status: 201 });
     } catch (error) {
-      console.log(error);
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -44,8 +48,11 @@ export default {
         questions, // Barcha savollarni yuborish
       });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Server xatosi" });
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -72,7 +79,11 @@ export default {
       await question.save();
       res.json({ message: "Updated question ", updatedQuestion: question });
     } catch (error) {
-      console.log(error.message);
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -90,7 +101,11 @@ export default {
 
       res.status(200).json({ deletedData, status: 200 });
     } catch (error) {
-      console.log(error);
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 };

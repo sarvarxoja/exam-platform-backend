@@ -37,7 +37,7 @@ export async function comparePassword(rawPassword, hash) {
 
 export async function jwtSign(id, tokenVersion) {
   const SECRET_KEY = process.env.SECRET_KEY;
-  const expiresIn = 5 * 60;
+  const expiresIn = 15 * 60;
 
   let jwtData = jwt.sign({ id: id, version: tokenVersion }, SECRET_KEY, {
     expiresIn,

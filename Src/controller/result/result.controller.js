@@ -73,8 +73,11 @@ export default {
         })),
       });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Server error", error: error.message });
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -103,8 +106,11 @@ export default {
         results, // Sahifalanib yuborilgan natijalar
       });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Server xatosi", error: error.message });
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -121,7 +127,6 @@ export default {
 
       res.status(200).json(result);
     } catch (error) {
-      console.log(error);
       if (error instanceof MongooseError) {
         return res.status(400).json({ message: "Invalide id", status: 400 });
       }
@@ -179,7 +184,11 @@ export default {
       const results = await ResultModel.find(filter);
       res.json(results);
     } catch (error) {
-      res.status(500).json({ error: "Serverda xatolik yuz berdi" });
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 };

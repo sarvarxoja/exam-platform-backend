@@ -28,8 +28,6 @@ export const checkAdminToken = async (req, res, next) => {
     if (error instanceof jwt.JsonWebTokenError) {
       return res.status(401).json({ message: "Unauthorized", status: 401 });
     }
-
-    console.error("Error in checkAdminToken:", error);
     return res
       .status(500)
       .json({ message: "Internal Server Error", status: 500 });

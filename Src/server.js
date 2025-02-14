@@ -5,12 +5,14 @@ import cors from "cors";
 import express from "express";
 import cookieParser from "cookie-parser";
 
+import { checkAdminToken } from "./token/token.js";
+
 import { test_routes } from "./routes/test.routes.js";
 import { auth_routes } from "./routes/auth.routes.js";
 import { result_routes } from "./routes/result.routes.js";
 import { statistics_routes } from "./routes/startistics.routes.js";
+import { ProfileMe } from "./controller/profile/profile.controller.js";
 import { sendMessage } from "./controller/support/support.controller.js";
-import { checkAdminToken } from "./token/token.js";
 
 async function starter() {
   try {
@@ -32,6 +34,7 @@ async function starter() {
     app.use("/tests", test_routes);
     app.use("/results", result_routes);
     app.post("/support", checkAdminToken, sendMessage);
+    app.get("/profile/me", checkAdminToken, ProfileMe);
     app.use("/dashboard", checkAdminToken, statistics_routes);
 
     app.listen(PORT, console.log(`Server is running on ${PORT} port.`));
