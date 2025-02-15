@@ -53,8 +53,11 @@ export default {
         },
       });
     } catch (error) {
-      console.error("Xatolik:", error);
-      res.status(500).json({ message: "Server xatosi", error: error.message });
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -119,8 +122,11 @@ export default {
 
       res.json({ results });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server xatosi" });
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -145,6 +151,11 @@ export default {
       if (error instanceof MongooseError) {
         return res.status(400).json({ message: "Invalide id", status: 400   });
       }
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 };

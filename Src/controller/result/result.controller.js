@@ -130,6 +130,11 @@ export default {
       if (error instanceof MongooseError) {
         return res.status(400).json({ message: "Invalide id", status: 400 });
       }
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
@@ -156,7 +161,11 @@ export default {
       if (error instanceof MongooseError) {
         return res.status(400).json({ message: "Invalide id", status: 400 });
       }
-      console.log(error.message);
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+        status: 500,
+      });
     }
   },
 
