@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { UsersModel } from "../../models/user/User.model.js";
+import { UsersModel } from "../../models/user/user.model.js";
 import { comparePassword, jwtRefreshSign, jwtSign } from "../../utils/utils.js";
 
 export default {
