@@ -8,7 +8,8 @@ export const auth_routes = Router();
 // limiter
 
 auth_routes
-  .post("/login", authController.login)
+  .post("/login", limiter, authController.login)
   .post("/refresh/token", authController.refreshToken)
   .post("/logout", checkAdminToken, authController.logout)
-  .get("/check/exists", checkAdminToken, authController.checkAuth);
+  .get("/check/exists", checkAdminToken, authController.checkAuth)
+  // .post("/register", authController.authRegister);

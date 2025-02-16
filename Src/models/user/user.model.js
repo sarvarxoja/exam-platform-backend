@@ -27,7 +27,7 @@ const UserSchema = new Schema({
     required: true,
   },
 
-  lastLogin: { type: Date, required: true },
+  lastLogin: { type: Date, default: Date.now()},
 
   password: {
     type: String,

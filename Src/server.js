@@ -21,7 +21,7 @@ async function starter() {
 
     app.use(
       cors({
-        origin: ["http://localhost:3000", "http://localhost:5173"],
+        origin: ["https://admin.alsafia.uz", "https://alsafia.uz"],
         credentials: true,
       })
     );

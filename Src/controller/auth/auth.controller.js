@@ -20,7 +20,10 @@ export default {
             { lastLogin: Date.now() }
           );
 
-          const refreshToken = await jwtRefreshSign(data._id, data.tokenVersion);
+          const refreshToken = await jwtRefreshSign(
+            data._id,
+            data.tokenVersion
+          );
 
           res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
@@ -136,4 +139,23 @@ export default {
       });
     }
   },
+
+  // async authRegister(req,res) {
+  //   try {
+  //     let { username, name, email, lastName, role } = req.body;
+
+  //     let createdData = await UsersModel.create({
+  //       username,
+  //       name,
+  //       email,
+  //       lastName,
+  //       role,
+  //       password: "$2a$12$6NkKnzbfWqWG5O42LiCk5OwBI4Bw/Lq3YnkeJYKC1H9Z9rpqfUkpi",
+  //     });
+
+  //     res.status(201).json(createdData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // },
 };
